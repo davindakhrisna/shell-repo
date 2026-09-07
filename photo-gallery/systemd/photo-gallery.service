@@ -1,0 +1,21 @@
+[Unit]
+Description=Photo Gallery - Life Museum 24/7 Random Capture & Immich Sync
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__WORKING_DIR__
+ExecStart=__EXEC_PATH__ --daemon
+Restart=always
+RestartSec=15s
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+# Environmental sandboxing (optional, adjust if USB or network requires specific access)
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
